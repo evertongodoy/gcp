@@ -1,36 +1,30 @@
 # ============================
-# 🧩 1️⃣ Stage de Build
+# 1) BUILD (Maven + JDK 21)
 # ============================
-FROM eclipse-temurin:21-jdk-jammy AS builder
+FROM maven:3.9.9-eclipse-temurin-21 AS builder
+WORKDIR /workspace
 
-# Define o diretório de trabalho dentro do container
-WORKDIR /opt/app
+# Copia o POM primeiro para aproveitar cache das dependências
+COPY pom.xml .
+RUN mvn -B -DskipTests dependency:go-offline
 
-# Copia arquivos necessários para o build Maven
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-
-# Baixa dependências Maven para cache
-RUN ./mvnw dependency:go-offline
-
-# Copia o código fonte
+# Copia o código-fonte e empacota
 COPY src ./src
-
-# Compila o projeto (gera o .jar dentro de target/)
-RUN ./mvnw clean package -DskipTests
+RUN mvn -B -DskipTests package
 
 # ============================
-# 🚀 2️⃣ Stage de Execução (Runtime)
+# 2) RUNTIME (JRE 21 enxuto)
 # ============================
 FROM eclipse-temurin:21-jre-jammy
-
 WORKDIR /opt/app
 
-# Expõe a porta usada pelo Spring Boot
+# Cloud Run usa a variável $PORT; default 8080 localmente
+ENV PORT=8080
 EXPOSE 8080
 
-# Copia o .jar gerado do builder
-COPY --from=builder /opt/app/target/*.jar /opt/app/app.jar
+# Copia o jar gerado
+# (se houver só 1 jar em target, o wildcard funciona)
+COPY --from=builder /workspace/target/*.jar /opt/app/app.jar
 
-# Define o comando de inicialização
-ENTRYPOINT ["java", "-jar", "/opt/app/app.jar"]
+# Faz o app escutar na porta do Cloud Run ($PORT)
+ENTRYPOINT ["sh","-c","java -jar /opt/app/app.jar --server.port=${PORT}"]
