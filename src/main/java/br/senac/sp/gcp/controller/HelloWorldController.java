@@ -13,7 +13,7 @@ public class HelloWorldController {
     @GetMapping("hello-world")
     public ResponseEntity<HelloWorldResponse> helloWorld() {
         return ResponseEntity.ok().body(
-                new HelloWorldResponse("Hello, World, atualizado!")
+                new HelloWorldResponse("Hello, World, atualizado!!")
         );
     }
 
