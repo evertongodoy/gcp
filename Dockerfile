@@ -27,4 +27,4 @@ EXPOSE 8080
 COPY --from=builder /workspace/target/*.jar /opt/app/app.jar
 
 # Faz o app escutar na porta do Cloud Run ($PORT)
-ENTRYPOINT ["sh","-c","java -jar /opt/app/app.jar --server.port=${PORT}"]
+ENTRYPOINT ["sh","-c","java -jar /opt/app/app.jar --server.port=${PORT}", "--server.address=0.0.0.0"]
