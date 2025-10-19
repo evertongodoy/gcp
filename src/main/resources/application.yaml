@@ -3,7 +3,7 @@ spring:
     name: gcp
   datasource:
 #    url: jdbc:mysql://localhost:3306/gcpdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
-    url: jdbc:mysql://senac-hello-world-475422:us-central1:mysql-gcp:3306/mysql-gcp?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
+    url: jdbc:mysql://senac-hello-world-475422:us-central1:mysql-gcp?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
     username: sa
     password: password
   jpa:
