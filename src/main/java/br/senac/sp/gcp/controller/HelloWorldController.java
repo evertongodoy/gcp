@@ -4,6 +4,7 @@ import br.senac.sp.gcp.controller.request.MensagemRequest;
 import br.senac.sp.gcp.controller.response.HelloWorldResponse;
 import br.senac.sp.gcp.controller.response.MensagemResponse;
 import br.senac.sp.gcp.database.Mensagem;
+import br.senac.sp.gcp.dtos.MensagemDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +25,8 @@ public class HelloWorldController {
 
     @PostMapping("salvar-mensagem")
     public ResponseEntity<MensagemResponse> cadastrarMensagem(@RequestBody MensagemRequest request){
-        var dto = mensagem.salvarMensagem(request.toDTO());
-        return ResponseEntity.ok().body(dto.toResponse());
+//        var dto = mensagem.salvarMensagem(request.toDTO());
+        return ResponseEntity.ok().body(MensagemDTO.builder().build().toResponse());
     }
 
 }
