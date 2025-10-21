@@ -1,6 +1,7 @@
 package br.senac.sp.gcp.database.impl;
 
 import br.senac.sp.gcp.database.Mensagem;
+import br.senac.sp.gcp.database.entities.MensagemEntity;
 import br.senac.sp.gcp.dtos.MensagemDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,12 @@ public class MensagemImpl implements Mensagem {
     @Override
     public MensagemDTO salvarMensagem(MensagemDTO mensagemDTO) {
         long rValue = this.random.nextLong();
-        return MensagemDTO.builder()
+        var entity = MensagemEntity.builder()
                 .id(rValue)
-                .mensagem("Cadastrado mock")
+                .mensagem(mensagemDTO.getMensagem())
                 .dataCadastro(LocalDate.now())
                 .build();
+        return entity.toDTO();
     }
 
 }
