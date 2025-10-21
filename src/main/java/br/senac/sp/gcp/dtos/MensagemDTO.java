@@ -1,7 +1,7 @@
 package br.senac.sp.gcp.dtos;
 
 import br.senac.sp.gcp.controller.response.MensagemResponse;
-import br.senac.sp.gcp.database.entities.MensagemEntity;
+//import br.senac.sp.gcp.database.entities.MensagemEntity;
 import lombok.Builder;
 import lombok.Data;
 
