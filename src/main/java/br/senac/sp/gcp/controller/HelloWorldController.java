@@ -3,6 +3,7 @@ package br.senac.sp.gcp.controller;
 import br.senac.sp.gcp.controller.request.MensagemRequest;
 import br.senac.sp.gcp.controller.response.HelloWorldResponse;
 import br.senac.sp.gcp.controller.response.MensagemResponse;
+import br.senac.sp.gcp.database.Mensagem;
 import br.senac.sp.gcp.dtos.MensagemDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,8 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class HelloWorldController {
 
+    final Mensagem mensagem;
+
     @GetMapping("hello-world")
     public ResponseEntity<HelloWorldResponse> helloWorld() {
         return ResponseEntity.ok().body(
@@ -24,12 +27,10 @@ public class HelloWorldController {
 
     @PostMapping("salvar-mensagem")
     public ResponseEntity<MensagemResponse> cadastrarMensagem(@RequestBody MensagemRequest request){
-//        var dto = mensagem.salvarMensagem(request.toDTO());
-        return ResponseEntity.ok().body(MensagemDTO.builder()
-                        .id(58L)
-                        .mensagem("mock")
-                        .dataCadastro(LocalDate.now())
-                .build().toResponse());
+        var dto = mensagem.salvarMensagem(request.toDTO());
+        return ResponseEntity.ok().body(
+                dto.toResponse()
+        );
     }
 
 }
