@@ -1,18 +1,18 @@
 spring:
   application:
     name: gcp
-#  datasource:
-##    url: jdbc:mysql://localhost:3306/gcpdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
+  datasource:
+    url: jdbc:mysql://localhost:3306/gcpdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
 #    url: jdbc:mysql://34.61.51.194:3306/gcpdb #?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
-#    username: sa
-#    password: password
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#  jpa:
-#    hibernate:
-#      ddl-auto: update   # para dev: create, create-drop, update; em prod use migrations
-#    properties:
-#      hibernate:
-#        #        dialect: org.hibernate.dialect.H2Dialect    # No H2
-#        dialect: org.hibernate.dialect.MySQL8Dialect
-#    show_sql: true
+    username: sa
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update   # para dev: create, create-drop, update; em prod use migrations
+    properties:
+      hibernate:
+        #        dialect: org.hibernate.dialect.H2Dialect    # No H2
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show_sql: true
 #senac-hello-world
