@@ -4,7 +4,7 @@ spring:
   datasource:
 #    url: jdbc:mysql://localhost:3306/gcpdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
     url: jdbc:mysql:///gcpdb?cloudSqlInstance=senac-hello-world-475422:us-central1:mysql-gcp&socketFactory=com.google.cloud.sql.mysql.SocketFactory&ipTypes=PUBLIC&useSSL=false&serverTimezone=America/Sao_Paulo
-    username: sa
+    username: ${DB_USER:sa}
 #    password: password
     password: SenacAluno1@
     driver-class-name: com.mysql.cj.jdbc.Driver
