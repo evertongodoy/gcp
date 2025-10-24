@@ -76,6 +76,13 @@
 			<version>1.26.1</version>
 		</dependency>
 
+		<!-- Esse starter habilita a resolução de propriedades vindas do Secret Manager via sm://. -->
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter-secretmanager</artifactId>
+<!--			<version>7.3.0</version>-->
+		</dependency>
+
 
 	</dependencies>
 
