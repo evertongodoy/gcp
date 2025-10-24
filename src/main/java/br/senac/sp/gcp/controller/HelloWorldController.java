@@ -35,7 +35,7 @@ public class HelloWorldController {
     @GetMapping("get-instituicao/project-id/{projectId}/secret-id/{secretId}")
     public ResponseEntity<String> getInstituicao(@PathVariable String projectId,
                                                  @PathVariable String secretId,
-                                                 @RequestParam String version) {
+                                                 @RequestParam(required = false, defaultValue="latest") String version) {
         if(Objects.isNull(version)){
             var instituicao = recuperaInstituicao.recuperarInstituicao(projectId, secretId);
             return ResponseEntity.ok().body(instituicao);
