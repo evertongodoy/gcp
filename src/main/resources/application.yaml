@@ -12,7 +12,7 @@ spring:
     url: jdbc:mysql:///gcpdb?cloudSqlInstance=senac-hello-world-475422:us-central1:mysql-gcp&socketFactory=com.google.cloud.sql.mysql.SocketFactory&ipTypes=PUBLIC&useSSL=false&serverTimezone=America/Sao_Paulo
     username: ${DB_USER:sa}
 #    password: password
-    password: ${sm://DB_PASSWORD:password}   # segredo do Secret Manager
+    password: ${sm://DB_PASSWORD}   # segredo do Secret Manager
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
