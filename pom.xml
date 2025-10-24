@@ -81,7 +81,13 @@
 			<groupId>com.google.cloud</groupId>
 			<artifactId>spring-cloud-gcp-starter-secretmanager</artifactId>
 <!--			<version>7.3.0</version>-->
-			<version>6.3.4</version>
+			<version>7.3.0</version>
+		</dependency>
+		<!-- Garante a versao corrigida no classpath do problema da dependencia acima -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.18.0</version>
 		</dependency>
 
 
